@@ -1,0 +1,8 @@
+*.out
+*.o
+main
+test-ascii
+.DS_Store
+tests
+.vscode
+bi.cpp
