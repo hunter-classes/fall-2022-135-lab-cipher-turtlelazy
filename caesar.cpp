@@ -2,9 +2,9 @@
 #include "caesar.h"
 #include <vector>
 #include <cmath>
+#include <algorithm> 
 
 // add functions here
-
 char shiftChar(char c, int rshift)
 {
     int num = (int)c;
@@ -98,22 +98,20 @@ std::vector<double> text_frequencies(std::string encrypted_string){
 
     return frequencies;
 }
-
-void shift_vector(std::vector<double> frequency_vector){
-    double add_value = frequency_vector.at(frequency_vector.size()-1);
-    frequency_vector.erase(frequency_vector.begin() + frequency_vector.size()-1);
-    frequency_vector.insert(frequency_vector.begin(),add_value);
+void shifting_vector(std::vector<double> &frequency_vector){
+    std::rotate(frequency_vector.begin(), frequency_vector.begin() + 1, frequency_vector.end());
 }
 
-std::string solve(std::string encrypted_string){
+std::string solve(std::string encrypted_string)
+{
     std::string return_string = "";
     std::vector<double> string_frequencies = text_frequencies(encrypted_string);
 
     int shift = 0;
     double smallest_distance = distance(string_frequencies,english_frequencies);
 
-    for(int i = 0;i< 26;i++){
-
+    for(int i = 1;i< 26;i++){
+        shifting_vector(string_frequencies);
     }
 
 
