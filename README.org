@@ -7,8 +7,7 @@
 * GitHub username: turtlelazy
 
 * Notes:
-
-
+- utilized std::rotate function to shift vector elements
 
 * General instructions:
 - Fill in your name and GitHub username on top.
