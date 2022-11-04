@@ -9,20 +9,14 @@ void print_vector(std::vector<double> vectors);
 
 int main()
 {
-    std::vector<double> vectors = {0,1,2,3,4,5,6};
-    print_vector(vectors);
-    shifting_vector(vectors);
-    print_vector(vectors);
-    shifting_vector(vectors);
-    print_vector(vectors);
-    shifting_vector(vectors);
-    return 0;
-}
+    std::string strings = "a set of words that is complete in itself, typically containing a subject and predicate, conveying a statement, question, exclamation, or command, and consisting of a main clause and sometimes one or more subordinate clauses";
+    // for(int i = 0; i < strings.length(); i++){
+    //     std::cout << strings[i] << " " << alphabet_placement(strings[i]) << "\n";
+    // }
+    strings = encryptCaesar(strings,10);
+    std::cout << strings << "\n";
 
-void print_vector(std::vector<double> vectors){
-    std::string print_string = "";
-    for(int i = 0; i < vectors.size();i++){
-        print_string += std::to_string(vectors.at(i)) + " ";
-    }
-    std::cout << print_string << "\n";
+    strings = solve(strings);
+    std::cout << strings << "\n";
+    return 0;
 }

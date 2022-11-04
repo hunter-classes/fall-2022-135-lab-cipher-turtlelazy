@@ -6,7 +6,7 @@ tests: tests.o caesar.o vigenere.o decryption.o
 test-ascii: test-ascii.o
 	g++ -o test-ascii test-ascii.o
 
-caesar.o: caesar.cpp caesar.h
+caesar.o: caesar.cpp caesar.h decryption.h
 	g++ -c -std=c++11 caesar.cpp
 
 vigenere.o: vigenere.cpp vigenere.h

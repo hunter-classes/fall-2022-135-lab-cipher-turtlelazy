@@ -3,6 +3,7 @@
 #include <vector>
 #include <cmath>
 #include <algorithm> 
+#include "decryption.h"
 
 // add functions here
 char shiftChar(char c, int rshift)
@@ -71,6 +72,15 @@ std::vector<double> english_frequencies = {
     0.02,
     0.0074
 };
+void print_vector(std::vector<double> vectors)
+{
+    std::string print_string = "";
+    for (int i = 0; i < vectors.size(); i++)
+    {
+        print_string += std::to_string(vectors.at(i)) + " ";
+    }
+    std::cout << print_string << "\n";
+}
 
 double distance(std::vector<double> english_frequencies, std::vector<double> text_frequencies){
     double sum = 0;
@@ -82,18 +92,18 @@ double distance(std::vector<double> english_frequencies, std::vector<double> tex
 }
 
 std::vector<double> text_frequencies(std::string encrypted_string){
-    std::vector<double> frequencies(0,26);
-    
+    std::vector<double> frequencies(26,0);
+    //print_vector(frequencies);
     int alpha_char = 0;
     for(int i = 0; i < encrypted_string.length();i++){
         int placement = alphabet_placement(encrypted_string[i]);
         if(placement != -1){
             frequencies.at(placement) += 1;
+            alpha_char ++;
         }
     }
-
     for(int i = 0; i < frequencies.size();i++){
-        frequencies.at(i) /= 1.0 * alpha_char;
+        frequencies.at(i) = frequencies.at(i) / (1.0 * alpha_char);
     }
 
     return frequencies;
@@ -106,14 +116,18 @@ std::string solve(std::string encrypted_string)
 {
     std::string return_string = "";
     std::vector<double> string_frequencies = text_frequencies(encrypted_string);
-
+    print_vector(string_frequencies);
     int shift = 0;
     double smallest_distance = distance(string_frequencies,english_frequencies);
-
+    std::cout << smallest_distance << "\n";
     for(int i = 1;i< 26;i++){
         shifting_vector(string_frequencies);
+        double current_distance = distance(string_frequencies,english_frequencies);
+        if(current_distance < smallest_distance){
+            shift = i;
+            smallest_distance = current_distance;
+        }
     }
 
-
-    return return_string;
+    return decryptCaesar(encrypted_string,shift);
 }
