@@ -9,12 +9,12 @@ void print_vector(std::vector<double> vectors);
 
 int main()
 {
-    std::string strings = "a set of words that is complete in itself, typically containing a subject and predicate, conveying a statement, question, exclamation, or command, and consisting of a main clause and sometimes one or more subordinate clauses";
+    std::string strings = "A set of words that is complete in itself, typically containing a subject and predicate, conveying a statement, question, exclamation, or command, and consisting of a main clause and sometimes one or more subordinate clauses";
     // for(int i = 0; i < strings.length(); i++){
     //     std::cout << strings[i] << " " << alphabet_placement(strings[i]) << "\n";
     // }
     strings = encryptCaesar(strings,10);
-    std::cout << strings << "\n";
+    std::cout << strings << " ------>\n\n";
 
     strings = solve(strings);
     std::cout << strings << "\n";

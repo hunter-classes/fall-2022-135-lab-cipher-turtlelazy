@@ -116,10 +116,10 @@ std::string solve(std::string encrypted_string)
 {
     std::string return_string = "";
     std::vector<double> string_frequencies = text_frequencies(encrypted_string);
-    print_vector(string_frequencies);
+    //print_vector(string_frequencies);
     int shift = 0;
     double smallest_distance = distance(string_frequencies,english_frequencies);
-    std::cout << smallest_distance << "\n";
+    //std::cout << smallest_distance << "\n";
     for(int i = 1;i< 26;i++){
         shifting_vector(string_frequencies);
         double current_distance = distance(string_frequencies,english_frequencies);
